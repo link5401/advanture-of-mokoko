@@ -1,4 +1,4 @@
 *.dll
-/lib
-/res
-/include/sdl2
+lib
+res
+include/sdl2
