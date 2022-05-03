@@ -1,6 +1,6 @@
-lib\*
-include\sdl2\*
-.vscode\*
+lib/*
+include/sdl2/*
+.vscode/*
 *.exe
 Makefile
 *.dll
