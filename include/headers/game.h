@@ -11,7 +11,7 @@ class Game {
         Game();
         ~Game();
 
-        void init(const char* title, int x, int y, int w, int h, Uint32 flags);
+        void run();
 
         GameState getGameState(){return _gameState;}
         SDL_Texture* loadTexture(const char* p_filePath);
@@ -20,7 +20,7 @@ class Game {
         void displayTexture();
         void handleEvents();
     private:
- 
+        void init(const char* title, int x, int y, int w, int h, Uint32 flags);
       
         SDL_Window* _window;
         SDL_Renderer* _renderer;

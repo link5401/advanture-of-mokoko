@@ -1,8 +1,8 @@
-lib/*
-res/*
-include/sdl2/*
-fonts/*
-vscode/*
+./lib/*
+./res/*
+./include/sdl2/*
+./fonts/*
+./vscode/*
 *.exe
 Makefile
 *.dll
