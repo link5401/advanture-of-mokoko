@@ -4,7 +4,7 @@ Game::Game() {
     _window = nullptr;
     _renderer = nullptr;
     _screenWidth = 1024;
-    _screenHeight = 600;
+    _screenHeight = 800;
     _gameState = GameState::PLAY;
 };
 
@@ -33,6 +33,8 @@ void Game::init(const char* title, int x, int y, int w, int h, Uint32 flags){
 
     _window = SDL_CreateWindow(title, x, y, w, h, flags);
     _renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_ACCELERATED);
+    SDL_SetRenderDrawColor(_renderer, 200, 180, 175, 255);
+    SDL_RenderClear(_renderer);
 
 }
 
@@ -60,10 +62,25 @@ SDL_Texture* Game::loadTexture(const char* p_filePath){
  * 
  * @param p_tex The texture to render
  */
-void Game::renderTexture(SDL_Texture* p_tex){
-    clear();
-    SDL_RenderCopy(_renderer, p_tex, NULL, NULL);
-    displayTexture();
+void Game::renderTexture(Entity& p_Entity){
+    int scale = p_Entity.getScale();
+    SDL_Rect currentFrame = p_Entity.getCurrentFrame();
+    SDL_Texture* texture = p_Entity.getTexture();
+
+    SDL_Rect src;
+    src.x =  currentFrame.x;
+    src.y =  currentFrame.y;
+    src.w =  currentFrame.w * scale;
+    src.h =  currentFrame.h * scale;
+
+    SDL_Rect dst;
+    dst.x = p_Entity.getX();
+    dst.y = p_Entity.getY();
+    dst.w = currentFrame.w * scale;
+    dst.h = currentFrame.h * scale;
+
+    /* Copying the texture to the renderer. */
+    SDL_RenderCopy(_renderer, texture, &src, &dst);
 }
 void Game::clear(){
     SDL_RenderClear(_renderer);
@@ -85,4 +102,11 @@ void Game::handleEvents() {
             _gameState = GameState::EXIT;
             break;
     }    
+}
+
+int Game::getWindowHeight(){
+    return _screenHeight;
+}
+int Game::getWindowWidth(){
+    return _screenWidth;
 }
