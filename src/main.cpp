@@ -1,17 +1,14 @@
 #include <headers/game.h>
 #include <headers/Entity.h>
 #include <vector>
-
 #define PLATFORM_WIDTH 40
 
-int main(int argc, char* argv[]){
+int main(int argc, char* argv[]){ 
     Game game;
-
-    int screenWidth = game.getWindowWidth();
-    int screenHeight = game.getWindowHeight();
-
     game.run();
     
+    int screenWidth = game.getWindowWidth();
+    int screenHeight = game.getWindowHeight();
     /* SDL_Texture  */
     SDL_Texture* smol_mokoko_guy = game.loadTexture("res/images/mokoko-guy-72x72.png");
     SDL_Texture* big_mokoko_guy = game.loadTexture("res/images/mokoko-guy.png");
@@ -21,25 +18,22 @@ int main(int argc, char* argv[]){
     Entity mokoko0(100, 100, 3,  smol_mokoko_guy);
     Entity mokoko1(500, 100, 10, big_mokoko_guy);
 
-    /* Vectors */
-    std::vector<Entity> platformVector;
-
-    /* Calculating the number of platforms that will fit in the window. */
-    const int NUMBER_OF_PLATFORM = (screenWidth / PLATFORM_WIDTH);
-    
-
-     /* Creating new platform Entities and pushing them into the vector. */
-    for (int i = 0; i <= NUMBER_OF_PLATFORM; i++)
-        platformVector.push_back(Entity(PLATFORM_WIDTH*i, 500, 1, platform));
-
+    /*maps */
+    std::vector<std::vector<int>> test_map =
+    {
+        {0,0,0,0,0, 0, 0, 0},
+        {0, 0,0,0,0}
+    };
+    tileMap map0(test_map, platform);
+    std::vector<std::vector<Entity>> platformVector2d = map0.getActualMap();
     while (game.getGameState() != GameState::EXIT) {  
         game.clear();  
         
         /*Rendering Texure*/
         game.renderTexture(mokoko0);
         game.renderTexture(mokoko1);
-        for (Entity& s : platformVector){
-            game.renderTexture(s);
+        for(std::vector<Entity> vec1d : platformVector2d){
+            for(Entity e : vec1d) game.renderTexture(e);
         }
 
         game.handleEvents();

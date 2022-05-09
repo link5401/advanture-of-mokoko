@@ -1,4 +1,5 @@
 #include <headers/Entity.h>
+Entity::Entity() {};
 Entity::~Entity() {};
 
 Entity::Entity(float p_x, float p_y, int p_scale, SDL_Texture* p_tex)
@@ -24,3 +25,4 @@ float Entity::getX(){
 float Entity::getY(){
     return y;
 }
+

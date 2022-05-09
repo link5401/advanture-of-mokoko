@@ -2,6 +2,7 @@
 
 #include <iostream>
 #include <headers/Entity.h>
+#include <headers/tileMap.h>
 #include <sdl2/SDL.h>
 #include <sdl2/SDL_image.h>
 
@@ -16,10 +17,12 @@ class Game {
 
         GameState getGameState(){return _gameState;}
         SDL_Texture* loadTexture(const char* p_filePath);
+        
         void clear();
         void renderTexture(Entity& p_Entity);
         void displayTexture();
         void handleEvents();
+
         int getWindowWidth();
         int getWindowHeight();
     private:

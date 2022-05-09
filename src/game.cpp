@@ -1,5 +1,5 @@
 #include <headers/game.h>
-
+#include <vector>
 Game::Game() {
     _window = nullptr;
     _renderer = nullptr;
@@ -63,10 +63,10 @@ SDL_Texture* Game::loadTexture(const char* p_filePath){
  * @param p_tex The texture to render
  */
 void Game::renderTexture(Entity& p_Entity){
-    int scale = p_Entity.getScale();
-    SDL_Rect currentFrame = p_Entity.getCurrentFrame();
     SDL_Texture* texture = p_Entity.getTexture();
-
+    SDL_Rect currentFrame = p_Entity.getCurrentFrame();
+    int scale = p_Entity.getScale();
+    
     SDL_Rect src;
     src.x =  currentFrame.x;
     src.y =  currentFrame.y;
@@ -103,6 +103,8 @@ void Game::handleEvents() {
             break;
     }    
 }
+
+
 
 int Game::getWindowHeight(){
     return _screenHeight;
