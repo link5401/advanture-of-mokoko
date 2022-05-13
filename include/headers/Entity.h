@@ -1,28 +1,29 @@
 #pragma once
 #include <sdl2/SDL.h>
 #include <sdl2/SDL_image.h>
+#include <headers/Math.h>
 
 class Entity{
     public:
-        Entity(float x, float y, int scale, SDL_Texture* p_tex);
+        Entity(Vector2f p_pos, int scale, SDL_Texture* p_tex);
         Entity();
         ~Entity();
         int getScale();
-        float getX();
-        float getY();
+        Vector2f& getPos(){
+            return pos;
+        }
         SDL_Texture* getTexture();
         SDL_Rect getCurrentFrame();
 
         void operator = (const Entity& E){
             scale = E.scale;
-            x = E.x;
-            y = E.y;
+            pos = E.pos;
             currentFrame = E.currentFrame;
             tex = E.tex;
         }
     private:
         int scale;
-        float x,y;
+        Vector2f pos;
         SDL_Rect currentFrame;
         SDL_Texture* tex;
 };

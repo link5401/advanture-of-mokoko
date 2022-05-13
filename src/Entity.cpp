@@ -2,8 +2,8 @@
 Entity::Entity() {};
 Entity::~Entity() {};
 
-Entity::Entity(float p_x, float p_y, int p_scale, SDL_Texture* p_tex)
- : x(p_x), y(p_y), scale(p_scale), tex(p_tex) 
+Entity::Entity(Vector2f p_pos, int p_scale, SDL_Texture* p_tex)
+ : pos(p_pos), scale(p_scale), tex(p_tex) 
  {
     currentFrame.x = 0;
     currentFrame.y = 0;
@@ -19,10 +19,5 @@ SDL_Texture* Entity::getTexture(){
 int Entity::getScale(){
     return scale;
 }
-float Entity::getX(){
-    return x;
-}
-float Entity::getY(){
-    return y;
-}
+
 

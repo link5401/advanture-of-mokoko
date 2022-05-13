@@ -6,15 +6,11 @@ Game::Game() {
     _screenWidth = 1024;
     _screenHeight = 800;
     _gameState = GameState::PLAY;
+    init("GAME v1.0", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _screenWidth, _screenHeight, SDL_WINDOW_SHOWN);
 };
 
 Game::~Game() {};
 
-
-void Game::run() {
-    init("GAME v1.0", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, _screenWidth, _screenHeight, SDL_WINDOW_SHOWN);
-   
-}
 
 /**
  * It initializes SDL and creates a window and renderer
@@ -32,7 +28,7 @@ void Game::init(const char* title, int x, int y, int w, int h, Uint32 flags){
     SDL_Init(SDL_INIT_EVERYTHING);
 
     _window = SDL_CreateWindow(title, x, y, w, h, flags);
-    _renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_ACCELERATED);
+    _renderer = SDL_CreateRenderer(_window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
     SDL_SetRenderDrawColor(_renderer, 200, 180, 175, 255);
     SDL_RenderClear(_renderer);
 
@@ -74,8 +70,8 @@ void Game::renderTexture(Entity& p_Entity){
     src.h =  currentFrame.h * scale;
 
     SDL_Rect dst;
-    dst.x = p_Entity.getX();
-    dst.y = p_Entity.getY();
+    dst.x = p_Entity.getPos().x;
+    dst.y = p_Entity.getPos().y;
     dst.w = currentFrame.w * scale;
     dst.h = currentFrame.h * scale;
 
@@ -112,3 +108,6 @@ int Game::getWindowHeight(){
 int Game::getWindowWidth(){
     return _screenWidth;
 }
+
+
+
