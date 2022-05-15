@@ -13,17 +13,17 @@ class Game {
         Game();
         ~Game();
 
-  
-
         GameState getGameState(){return _gameState;}
+        
+
         SDL_Texture* loadTexture(const char* p_filePath);
         
         void clear();
+
         void renderTexture(Entity& p_Entity);
         void displayTexture();
-        void handleEvents();
-
-      
+        void handleEvents(); 
+        void setGameState(GameState p_GameState){ _gameState = p_GameState;}
 
         int getWindowWidth();
         int getWindowHeight();

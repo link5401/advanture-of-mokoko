@@ -66,14 +66,14 @@ void Game::renderTexture(Entity& p_Entity){
     SDL_Rect src;
     src.x =  currentFrame.x;
     src.y =  currentFrame.y;
-    src.w =  currentFrame.w * scale;
-    src.h =  currentFrame.h * scale;
+    src.w =  currentFrame.w;
+    src.h =  currentFrame.h;
 
     SDL_Rect dst;
     dst.x = p_Entity.getPos().x;
     dst.y = p_Entity.getPos().y;
-    dst.w = currentFrame.w * scale;
-    dst.h = currentFrame.h * scale;
+    dst.w = currentFrame.w;
+    dst.h = currentFrame.h;
 
     /* Copying the texture to the renderer. */
     SDL_RenderCopy(_renderer, texture, &src, &dst);
@@ -90,14 +90,7 @@ void Game::displayTexture(){
  * EXIT
  */
 void Game::handleEvents() {
-    SDL_Event evnt;
-    SDL_PollEvent(&evnt);
-
-    switch (evnt.type) {
-        case SDL_QUIT:
-            _gameState = GameState::EXIT;
-            break;
-    }    
+    
 }
 
 

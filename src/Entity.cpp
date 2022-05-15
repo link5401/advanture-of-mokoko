@@ -7,8 +7,8 @@ Entity::Entity(Vector2f p_pos, int p_scale, SDL_Texture* p_tex)
  {
     currentFrame.x = 0;
     currentFrame.y = 0;
-    currentFrame.w = 40;
-    currentFrame.h = 40;
+    currentFrame.w = BASE * p_scale;
+    currentFrame.h = BASE * p_scale;
 }
 SDL_Rect Entity::getCurrentFrame(){
     return currentFrame;
