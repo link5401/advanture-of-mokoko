@@ -2,7 +2,7 @@
 #include <vector>
 #include <sdl2/SDL.h>
 #include <sdl2/SDL_image.h>
-#include "Entity.h"
+#include <headers/Entity.hpp>
 
 
 class tileMap{

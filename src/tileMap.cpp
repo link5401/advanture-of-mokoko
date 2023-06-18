@@ -1,4 +1,4 @@
-#include <headers/tileMap.h>
+#include <headers/tileMap.hpp>
 #include <iostream>
 tileMap::~tileMap(){}
 #define BLOCK_WIDTH 40
@@ -28,7 +28,7 @@ tileMap::tileMap(std::vector<std::vector<int>> map_sample, SDL_Texture* p_grass)
             switch(int_map[i][j]){
                 case 0:
                     vE.push_back(Entity(Vector2f(j*BLOCK_WIDTH, 
-                                        BASE_HEIGHT+i*BLOCK_WIDTH), 40/BASE, p_grass));
+                                        BASE_HEIGHT+i*BLOCK_WIDTH), Vector2f(40,40), p_grass));
                     break;
                 default:
                     break;
