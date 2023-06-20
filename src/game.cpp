@@ -84,6 +84,33 @@ void Game::renderTexture(Entity& p_Entity, SDL_Rect cameraRect) {
     // src.x = dst.x;
     // src.y = dst.y;
 }
+void Game::renderCharacter(Character& p_Character, SDL_Rect cameraRect) {
+    SDL_Texture* texture = p_Character.getTexture();
+    SDL_Rect currentFrame = p_Character.getCurrentFrame();
+    Uint32 characterDirection = (Uint32)p_Character.getDirection();
+    Uint32 spriteNumber =
+        characterDirection == (Uint32)Direction::UP ? UP_SPRITE_NO : SPRITE_NO;
+    Uint32 animationFrequency = 500;
+
+    if (p_Character.isMoving()) {
+        characterDirection += 4;
+        spriteNumber = MOVING_SPRITE_NO;
+        animationFrequency = 50;
+    }
+    Uint32 sprite = (SDL_GetTicks() / animationFrequency) % spriteNumber;
+    SDL_Rect src;
+    src.x = sprite * SPRITE_HORIZONTAL;
+    src.y = characterDirection * SPRITE_VERTICAL;
+    src.w = CHARACTER_WIDTH;
+    src.h = CHARACTER_HEIGHT;
+    SDL_Rect dst;
+    dst.x = p_Character.getPos().x - cameraRect.x;
+    dst.y = p_Character.getPos().y - cameraRect.y;
+    dst.w = CHARACTER_WIDTH;
+    dst.h = CHARACTER_HEIGHT;
+    SDL_RenderCopy(_renderer, texture, &src, &dst);
+}
+
 void Game::renderBackground(Entity& p_Entity) {
     SDL_Texture* texture = p_Entity.getTexture();
     SDL_Rect currentFrame = p_Entity.getCurrentFrame();

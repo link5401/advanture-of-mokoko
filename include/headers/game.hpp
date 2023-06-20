@@ -3,6 +3,7 @@
 #include <sdl2/SDL_image.h>
 
 #include <headers/Entity.hpp>
+#include <headers/Character.hpp>
 #include <headers/tileMap.hpp>
 #include <iostream>
 
@@ -18,9 +19,10 @@ class Game {
     SDL_Texture *loadTexture(const char *p_filePath);
 
     void clear();
-
-    void renderTexture(Entity &p_Entity, SDL_Rect cameraRect);
     void renderBackground(Entity &p_Entity);
+    void renderTexture(Entity &p_Entity, SDL_Rect cameraRect);
+    void renderCharacter(Character &p_Character, SDL_Rect cameraRect);
+
     void displayTexture();
     void handleEvents();
     void setGameState(GameState p_GameState) { _gameState = p_GameState; }

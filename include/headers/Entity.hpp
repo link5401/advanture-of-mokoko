@@ -31,6 +31,7 @@ class Entity {
         tex = E.tex;
     }
 
+
    private:
     int scale;
     Vector2f pos;
