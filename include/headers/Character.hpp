@@ -2,20 +2,7 @@
 #include <headers/Entity.hpp>
 #include <vector>
 
-#define AKey SDL_SCANCODE_A
-#define DKey SDL_SCANCODE_D
-#define SKey SDL_SCANCODE_S
-#define WKey SDL_SCANCODE_W
-#define SPACEBAR SDL_SCANCODE_SPACE
 
-#define CHARACTER_WIDTH 85
-#define CHARACTER_HEIGHT 115
-#define SPRITE_HORIZONTAL 120
-#define SPRITE_VERTICAL 130
-
-#define SPRITE_NO 3
-#define UP_SPRITE_NO 1
-#define MOVING_SPRITE_NO 10
 
 enum class Direction : Uint32 { DOWN = 0, LEFT = 1, UP = 2, RIGHT = 3 };
 

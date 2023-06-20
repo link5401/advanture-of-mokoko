@@ -45,12 +45,13 @@ bool checkCollision(float x1, float y1, int w1, int h1, float x2, float y2,
     return (x1 + w1 >= x2) && (x2 + w2 >= x1) && (y1 + h1 >= y2) &&
            (y2 + h2 >= y1);
 }
+
 void Character::update(double deltaTime) {
     const Uint8* _keyState = SDL_GetKeyboardState(NULL);
     movementHandle(_keyState);
     Vector2f newPosition = (Velocity * deltaTime) + getPos();
     float x1 = newPosition.x, y1 = newPosition.y;
-    if(x1 < 0 || x1 > 4800 || y1 < 0 || y1 > 4000) newPosition = getPos();
+    if(x1 < 0 || x1 > LEVEL_WIDTH || y1 < 0 || y1 > LEVEL_HEIGHT) newPosition = getPos();
     setPos(newPosition);
     setVelocity(still);
 }
