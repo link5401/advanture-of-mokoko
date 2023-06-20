@@ -50,6 +50,7 @@ void Character::update(double deltaTime) {
     movementHandle(_keyState);
     Vector2f newPosition = (Velocity * deltaTime) + getPos();
     float x1 = newPosition.x, y1 = newPosition.y;
+    if(x1 < 0 || x1 > 4800 || y1 < 0 || y1 > 4000) newPosition = getPos();
     setPos(newPosition);
     setVelocity(still);
 }

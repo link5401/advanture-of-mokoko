@@ -1,7 +1,7 @@
 #include <sdl2/SDL.h>
 #include <sdl2/SDL_image.h>
 #include <sdl2/SDL_render.h>
-
+#include <headers/config.hpp>
 #include <headers/Entity.hpp>
 #include <headers/Character.hpp>
 #include <headers/game.hpp>
@@ -28,8 +28,7 @@ std::vector<std::vector<int>> test_map = {{0, 0, 0, 0, 0, 0, 0, 0},
 tileMap map0(test_map, platform);
 std::vector<std::vector<Entity>> platformVector2d = map0.getActualMap();
 
-int levelWidth = 4800;
-int levelHeight = 2000;
+
 
 
 Uint64 currentTick = SDL_GetPerformanceCounter();

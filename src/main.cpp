@@ -32,10 +32,10 @@ SDL_Rect screenScroll(Character& player, Entity& background) {
     if (bgCurrentFrame.x < 0) background.setCurrentFramePosX(0);
     if (bgCurrentFrame.y < 0) background.setCurrentFramePosY(0);
     bgCurrentFrame = background.getCurrentFrame();
-    if (bgCurrentFrame.x + bgCurrentFrame.w >= levelWidth)
-        background.setCurrentFramePosX(levelWidth - screenWidth);
-    if (bgCurrentFrame.y + bgCurrentFrame.h >= levelHeight)
-        background.setCurrentFramePosY(levelHeight - screenHeight);
+    if (bgCurrentFrame.x + bgCurrentFrame.w >= LEVEL_WIDTH)
+        background.setCurrentFramePosX(LEVEL_WIDTH - screenWidth);
+    if (bgCurrentFrame.y + bgCurrentFrame.h >= LEVEL_HEIGHT)
+        background.setCurrentFramePosY(LEVEL_HEIGHT - screenHeight);
     return background.getCurrentFrame();
 }
 
@@ -62,8 +62,9 @@ void update() {
                          (double)SDL_GetPerformanceFrequency());
     SDL_Rect bgRect = screenScroll(Character0, background);
 
+    game.renderBackground(background);
     game.renderCharacter(Character0, bgRect);
-    // game.renderBackground(background);
+
     // game.renderTexture(Character1, bgRect);
     for (std::vector<Entity> vec1d : platformVector2d) {
         for (Entity e : vec1d) game.renderTexture(e, bgRect);

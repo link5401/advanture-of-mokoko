@@ -1,7 +1,7 @@
 #pragma once
 #include <sdl2/SDL.h>
 #include <sdl2/SDL_image.h>
-
+#include <headers/config.hpp>
 #include <headers/Entity.hpp>
 #include <headers/Character.hpp>
 #include <headers/tileMap.hpp>
