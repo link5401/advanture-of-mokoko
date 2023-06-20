@@ -37,5 +37,5 @@ class Character : public Entity {
     Vector2f Velocity;
     Vector2f Accelaration;
     bool b_isMoving;
-    void movementHandle(const Uint8 *p_keyBoardBools);
+    void movementHandle(const Uint8* p_keyBoardBools);
 };

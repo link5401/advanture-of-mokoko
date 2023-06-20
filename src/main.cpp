@@ -40,6 +40,7 @@ SDL_Rect screenScroll(Character& player, Entity& background) {
 }
 
 void update() {
+
     while (SDL_PollEvent(&evnt)) {
         SDL_Scancode _scancode = evnt.key.keysym.scancode;
         switch (evnt.type) {
@@ -68,6 +69,5 @@ void update() {
         for (Entity e : vec1d) game.renderTexture(e, bgRect);
     }
     game.displayTexture();
-
     Character0.update(deltaTime);
 }

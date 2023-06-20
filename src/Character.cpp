@@ -18,22 +18,22 @@ Direction Character::getDirection() {return _Direction;}
 
 
 
-void Character::movementHandle(const Uint8* p_keyboardBools) {
-    if (p_keyboardBools[AKey]) {
+void Character::movementHandle(const Uint8* _keyState) {
+    if (_keyState[AKey]) {
         Velocity.x -= Accelaration.x;
         _Direction = Direction::LEFT;
     }
-    if (p_keyboardBools[DKey]) {
+    if (_keyState[DKey]) {
         Velocity.x += Accelaration.x;
         _Direction = Direction::RIGHT;
 
     }
-    if (p_keyboardBools[WKey]) {
+    if (_keyState[WKey]) {
         Velocity.y -= Accelaration.y;
         _Direction = Direction::UP;
 
     }
-    if (p_keyboardBools[SKey]) {
+    if (_keyState[SKey]) {
         Velocity.y += Accelaration.y;
         _Direction = Direction::DOWN;
 
@@ -46,8 +46,8 @@ bool checkCollision(float x1, float y1, int w1, int h1, float x2, float y2,
            (y2 + h2 >= y1);
 }
 void Character::update(double deltaTime) {
-    const Uint8* keyboardBools = SDL_GetKeyboardState(NULL);
-    movementHandle(keyboardBools);
+    const Uint8* _keyState = SDL_GetKeyboardState(NULL);
+    movementHandle(_keyState);
     Vector2f newPosition = (Velocity * deltaTime) + getPos();
     float x1 = newPosition.x, y1 = newPosition.y;
     setPos(newPosition);

@@ -3,7 +3,6 @@
 #include <sdl2/SDL_render.h>
 
 #include <headers/Entity.hpp>
-#include <headers/KeyboardHandler.hpp>
 #include <headers/Character.hpp>
 #include <headers/game.hpp>
 #include <vector>
@@ -28,7 +27,6 @@ std::vector<std::vector<int>> test_map = {{0, 0, 0, 0, 0, 0, 0, 0},
                                           {0, 0, 0, 0, 0}};
 tileMap map0(test_map, platform);
 std::vector<std::vector<Entity>> platformVector2d = map0.getActualMap();
-
 
 int levelWidth = 4800;
 int levelHeight = 2000;
